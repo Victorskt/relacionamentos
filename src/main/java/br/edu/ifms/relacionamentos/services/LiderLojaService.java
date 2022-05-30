@@ -1,37 +1,31 @@
 package br.edu.ifms.relacionamentos.services;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ifms.relacionamentos.model.LiderLoja;
 import br.edu.ifms.relacionamentos.repository.LiderLojaRepository;
 
 @Service
+
 public class LiderLojaService {
 
-    LiderLojaRepository repository;
+    @Autowired
+    LiderLojaRepository liderlojaRepository;
 
     public List<LiderLoja> getLiderLoja() {
-        return repository.findAll();
+        return liderlojaRepository.findAll();
     }
 
-    public void buscaId(LiderLoja id) {
-        repository.findAll();
+    public void saveLiderLoja(LiderLoja liderloja) {
+        liderlojaRepository.save(liderloja);
     }
 
-    public void insereLider(LiderLoja liderloja) {
-
-        this.repository.save(liderloja);
-
+    public void delete(UUID id) {
+        liderlojaRepository.deleteById(id);
     }
 
-    public void atualizaLider(LiderLoja liderloja) {
-        repository.save(liderloja);
-
-    }
-
-    public void deleteLider(LiderLoja liderloja) {
-        repository.delete(liderloja);
-    }
 }

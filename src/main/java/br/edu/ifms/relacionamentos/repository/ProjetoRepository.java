@@ -5,9 +5,9 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.edu.ifms.relacionamentos.model.Localizacao;
+import br.edu.ifms.relacionamentos.model.Projeto;
 
 @Repository
-public interface LocalizacaoRepository extends JpaRepository<Localizacao, UUID>{
+public interface ProjetoRepository extends JpaRepository<Projeto, UUID>{
     
 }

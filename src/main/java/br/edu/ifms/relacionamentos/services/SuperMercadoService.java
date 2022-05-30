@@ -1,37 +1,30 @@
 package br.edu.ifms.relacionamentos.services;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.edu.ifms.relacionamentos.model.SuperMercado;
 import br.edu.ifms.relacionamentos.repository.SuperMercadoRepository;
 
 @Service
+
 public class SuperMercadoService {
 
-    SuperMercadoRepository repository;
+    @Autowired
+    SuperMercadoRepository supermercadoRepository;
 
     public List<SuperMercado> getSuperMercado() {
-        return repository.findAll();
+        return supermercadoRepository.findAll();
     }
 
-    public void buscaId(SuperMercado id) {
-        repository.findAll();
+    public void saveSuperMercado(SuperMercado supermercado) {
+        supermercadoRepository.save(supermercado);
     }
 
-    public void insereSup(SuperMercado supermercado) {
-
-        this.repository.save(supermercado);
-
+    public void delete(UUID id) {
+        supermercadoRepository.deleteById(id);
     }
 
-    public void atualizaSup(SuperMercado supermercado) {
-        repository.save(supermercado);
-
-    }
-
-    public void deleteSup(SuperMercado superMercado) {
-        repository.delete(superMercado);
-    }
 }

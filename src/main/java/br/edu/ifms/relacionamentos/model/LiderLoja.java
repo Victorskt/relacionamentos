@@ -1,15 +1,12 @@
 package br.edu.ifms.relacionamentos.model;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,12 +24,8 @@ public class LiderLoja {
     private String cargo;
     private double salario;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-        name = "SUPERMERCADO_LIDERLOJA",
-        joinColumns = { @JoinColumn(name = "LIDERLOJA_ID") },
-        inverseJoinColumns = { @JoinColumn(name = "SUPERMERCADO_ID") }
-    )
-    private List<SuperMercado> supermercados;
+    @OneToOne(cascade = { CascadeType.ALL })
+    @JoinColumn(name = "LiderLoja_ID")
+    private LiderLoja liderloja;
     
 }

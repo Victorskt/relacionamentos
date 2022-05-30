@@ -1,37 +1,31 @@
 package br.edu.ifms.relacionamentos.services;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ifms.relacionamentos.model.Localizacao;
 import br.edu.ifms.relacionamentos.repository.LocalizacaoRepository;
 
 @Service
+
 public class LocalizacaoService {
 
-    LocalizacaoRepository repository;
+    @Autowired
+    LocalizacaoRepository localizacaoRepository;
 
     public List<Localizacao> getLocalizacao() {
-        return repository.findAll();
+        return localizacaoRepository.findAll();
     }
 
-    public void buscaId(Localizacao id) {
-        repository.findAll();
+    public void saveLocalizacao(Localizacao localizacao) {
+        localizacaoRepository.save(localizacao);
     }
 
-    public void insereLoc(Localizacao localizacao) {
-
-        this.repository.save(localizacao);
-
+    public void delete(UUID id) {
+        localizacaoRepository.deleteById(id);
     }
 
-    public void atualizaLoc(Localizacao localizacao) {
-        repository.save(localizacao);
-
-    }
-
-    public void deleteLoc(Localizacao localizacao) {
-        repository.delete(localizacao);
-    }
 }

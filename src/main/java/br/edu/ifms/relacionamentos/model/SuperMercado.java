@@ -21,8 +21,8 @@ public class SuperMercado {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nome;
-    private double custoTotal;
-    private int duracao; // meses
+    private double endereco;
+
 
     @ManyToMany(mappedBy = "supermercados")
     private List<LiderLoja> lideres;
